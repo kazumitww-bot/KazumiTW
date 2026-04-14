@@ -1,0 +1,87 @@
+:root {
+    --main-bg: #0b0e14;
+    --card-bg: #1a1d24;
+    --accent: #58a6ff;
+    --danger: #ff4757;
+    --text: #ffffff;
+}
+
+body {
+    background: var(--main-bg);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background: var(--card-bg);
+    align-items: center;
+    border-bottom: 2px solid var(--accent);
+}
+
+.logo { font-size: 24px; font-weight: bold; }
+.logo span { color: var(--accent); }
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 30px 5%;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: center;
+    border: 1px solid #30363d;
+}
+
+.card:hover { transform: translateY(-8px); border-color: var(--accent); }
+.card img { width: 100%; height: 280px; object-fit: cover; }
+.card h4 { padding: 10px; margin: 0; font-size: 14px; height: 40px; overflow: hidden; }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+}
+
+.auth-form { width: 300px; text-align: center; }
+input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; background: #0d1117; color: white; box-sizing: border-box; }
+button { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+.btn-logout { background: var(--danger) !important; width: auto !important; margin-left: 15px; }
+.close { position: absolute; right: 15px; top: 10px; font-size: 25px; cursor: pointer; color: var(--accent); }
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Соотношение 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}

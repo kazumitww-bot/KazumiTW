@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KazumiTV — Anime Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">Kazumi<span>TV</span></div>
+    <nav id="auth-nav">
+        <button onclick="document.getElementById('auth-modal').style.display='flex'">Вход</button>
+    </nav>
+</header>
+
+<div id="auth-modal" class="modal">
+    <div class="modal-content auth-form">
+        <span class="close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
+        <h2 id="auth-title">Вход</h2>
+        <input type="email" id="email" placeholder="Ваш Email">
+        <input type="password" id="pass" placeholder="Пароль (мин. 6 знаков)">
+        <button id="auth-submit">Отправить</button>
+        <p id="auth-toggle" style="cursor:pointer; font-size: 12px; margin-top: 10px;">Нет аккаунта? Регистрация</p>
+    </div>
+</div>
+
+<main id="anime-list" class="anime-grid">
+    </main>
+
+<div id="player-container" class="modal"></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
