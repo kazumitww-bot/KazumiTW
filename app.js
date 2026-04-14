@@ -43,32 +43,24 @@ async function loadAnime() {
     });
 }
 
-// 2. Плеер с автоматическим выбором озвучек
 window.openPlayer = (id, title) => {
     const container = document.getElementById('player-container');
     container.style.display = 'flex';
     
-    // Используем универсальный агрегатор, который сам подберет рабочий сервер
-    // Он работает на большинстве доменов без проблем
-    const playerUrl = `https://voidboost.net/embed/shikimori/${id}`;
+    // Используем максимально совместимый плеер для HTTPS
+    const playerUrl = `https://shikimori.one/animes/${id}/video_online`;
 
     container.innerHTML = `
-        <div class="modal-content" style="max-width: 900px; width: 95%; background: #0d1117; border: 1px solid #30363d;">
-            <span class="close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
-            <h2 style="margin-top:0; color:#58a6ff; font-size: 1.2rem;">${title}</h2>
-            <div class="video-wrapper" style="background: #000; border-radius: 8px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                <iframe 
-                    src="${playerUrl}" 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                    frameborder="0" 
-                    allowfullscreen
-                ></iframe>
+        <div class="modal-content" style="max-width: 900px; width: 95%; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; overflow: hidden;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #161b22;">
+                <h2 style="margin:0; color:#58a6ff; font-size: 1.1rem; font-family: sans-serif;">${title}</h2>
+                <span class="close" onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="cursor:pointer; color:#8b949e; font-size:24px;">&times;</span>
             </div>
-            <div style="margin-top:10px; text-align:center;">
-                <button onclick="document.querySelector('iframe').src='https://shikimori.one/api/videos/${id}/external'" 
-                        style="background:#238636; color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">
-                    Если не грузит: Попробовать другой плеер
-                </button>
+            <div class="video-wrapper" style="background: #000; position: relative; padding-bottom: 56.25%; height: 0;">
+                <iframe src="${playerUrl}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div style="padding: 15px; text-align: center; background: #161b22;">
+                <p style="color: #8b949e; font-size: 11px; margin: 0;">Если плеер пустой, попробуй нажать на кнопку "Смотреть на сайте" внутри окна или используй VPN.</p>
             </div>
         </div>
     `;
