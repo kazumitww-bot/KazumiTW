@@ -47,20 +47,26 @@ window.openPlayer = (id, title) => {
     const container = document.getElementById('player-container');
     container.style.display = 'flex';
     
-    // Используем максимально совместимый плеер для HTTPS
-    const playerUrl = `https://shikimori.one/animes/${id}/video_online`;
+    // Используем Lorca/Linker. Это "комбайн", в котором есть ВСЕ плееры сразу.
+    const playerUrl = `https://free-linker.com/anime/shikimori/${id}`;
 
     container.innerHTML = `
-        <div class="modal-content" style="max-width: 900px; width: 95%; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; overflow: hidden;">
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #161b22;">
+        <div class="modal-content" style="max-width: 900px; width: 95%; background: #0d1117; border: 1px solid #30363d; border-radius: 12px; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #161b22; border-bottom: 1px solid #30363d;">
                 <h2 style="margin:0; color:#58a6ff; font-size: 1.1rem; font-family: sans-serif;">${title}</h2>
-                <span class="close" onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="cursor:pointer; color:#8b949e; font-size:24px;">&times;</span>
+                <span class="close" onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="cursor:pointer; color:#8b949e; font-size:24px; transition: 0.3s;" onmouseover="this.style.color='#f85149'" onmouseout="this.style.color='#8b949e'">&times;</span>
             </div>
             <div class="video-wrapper" style="background: #000; position: relative; padding-bottom: 56.25%; height: 0;">
-                <iframe src="${playerUrl}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe>
+                <iframe 
+                    src="${playerUrl}" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                    frameborder="0" 
+                    allowfullscreen
+                    referrerpolicy="no-referrer"
+                ></iframe>
             </div>
-            <div style="padding: 15px; text-align: center; background: #161b22;">
-                <p style="color: #8b949e; font-size: 11px; margin: 0;">Если плеер пустой, попробуй нажать на кнопку "Смотреть на сайте" внутри окна или используй VPN.</p>
+            <div style="padding: 12px; text-align: center; background: #161b22;">
+                <p style="color: #8b949e; font-size: 12px; margin: 0;">Выберите сервер внутри плеера (Kodik, Bazon и т.д.), если видео не запустилось.</p>
             </div>
         </div>
     `;
